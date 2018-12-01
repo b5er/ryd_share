@@ -19,6 +19,9 @@ const Client = new smartcar.AuthClient({
     testMode: true,
 });
 
+/**
+ * Redirect to smart car login
+ */
 app.get('/', (req, res) =>{
 
     const link = Client.getAuthUrl({state: 'passive'});
@@ -26,7 +29,9 @@ app.get('/', (req, res) =>{
 
 });
 
-
+/**
+ * Response from contacting smart car directly
+ */
 app.get('/callback', (req, res, next) => {
 
     let access;
@@ -38,6 +43,7 @@ app.get('/callback', (req, res, next) => {
     return Client.exchangeCode(req.query.code)
         .then(_access => {
             // in a production app you'll want to store this in some kind of persistent storage
+            // todo: store this access token key in some database to access user and vehicles by brand
             access = _access;
 
             //todo: remove this, testing purposes only
@@ -67,17 +73,36 @@ app.get('/callback', (req, res, next) => {
 
 });
 
-
-app.get('/vehicles/:token', (req, res) => {
+/**
+ * Gets all the vehicles info for a certain access token
+ */
+app.get('/vehicles/info/:token', (req, res) => {
 
     let accessToken  = req.params.token;
     smartcar.getVehicleIds(accessToken)
+        .then(response => {
+            return response.vehicles;
+
+        })
+        .map(vid =>  new smartcar.Vehicle(vid, accessToken).info())
+        .then( vehicle => {
+            res.json(vehicle);
+            console.log(vehicle)
+    });
+
+});
+
+
+app.get('/user/:token', (req, res) => {
+
+    let accessToken  = req.params.token;
+
+    smartcar.getUserId(accessToken)
         .then(function(response) {
             res.json(response);
         });
 
 });
-
 
 app.listen(port, ()=>{
     console.log(`App running on localhost:${port}`);
