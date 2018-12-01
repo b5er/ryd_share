@@ -15,8 +15,8 @@ const Client = new smartcar.AuthClient({
     clientId,
     clientSecret,
     redirectUri,
-    scope: ['read_vehicle_info'],
-    testMode: true,
+    scope: ['read_vehicle_info', 'read_location', 'read_odometer', 'control_security'],
+    testMode: false,
 });
 
 /**
@@ -89,6 +89,53 @@ app.get('/vehicles/info/:token', (req, res) => {
             res.json(vehicle);
             console.log(vehicle)
     });
+
+});
+
+
+app.get('/vehicles/location/:token', (req, res) => {
+
+    let accessToken = req.params.token;
+    smartcar.getVehicleIds(accessToken)
+        .then(response => {
+            return response.vehicles;
+        })
+        .map(vid => new smartcar.Vehicle(vid, accessToken).location())
+        .then(vehicle => {
+            res.json(vehicle);
+            console.log(vehicle);
+        })
+
+});
+
+
+app.get('/vehicles/odometer/:token', (req, res) => {
+
+    let accessToken = req.params.token;
+    smartcar.getVehicleIds(accessToken)
+        .then(response => {
+            return response.vehicles;
+        })
+        .map(vid => new smartcar.Vehicle(vid, accessToken).odometer())
+        .then(vehicle => {
+            res.json(vehicle);
+            console.log(vehicle);
+        })
+
+});
+
+app.get('/vehicles/permissions/:token', (req, res) => {
+
+    let accessToken = req.params.token;
+    smartcar.getVehicleIds(accessToken)
+        .then(response => {
+            return response.vehicles;
+        })
+        .map(vid => new smartcar.Vehicle(vid, accessToken).permissions())
+        .then(vehicle => {
+            res.json(vehicle);
+            console.log(vehicle);
+        })
 
 });
 
