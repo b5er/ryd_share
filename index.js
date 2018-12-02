@@ -108,6 +108,21 @@ app.get('/vehicles/location/:token', (req, res) => {
 
 });
 
+app.get('/vehicle/location/:vid/:token', (req, res) => {
+
+    let accessToken = req.params.token;
+    smartcar.getVehicleIds(accessToken)
+        .then(response => {
+            return response.vehicles;
+        })
+        .then(vid => new smartcar.Vehicle(req.params.vid, accessToken).location())
+        .then(vehicle => {
+            res.json(vehicle);
+            console.log(vehicle);
+        })
+
+});
+
 
 app.get('/vehicles/odometer/:token', (req, res) => {
 
