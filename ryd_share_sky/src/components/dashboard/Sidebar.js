@@ -17,14 +17,22 @@ class Sidebar extends Component {
 	render() {
 
 		const { tab } = this.state
-		const { getItem, showItem } = this.props
+		const { showItem } = this.props
 
 		return (
-			<div className="sidebar is-active">
+			<div id="sidebar" className="sidebar is-active">
 	            <div className="sidebar-header">
 	                <img src={Logo} alt="project logo" />
 	                <strong><p className="is-size-4" style={{ color: 'white' }}>Iterport</p></strong>
-	                <a className="sidebar-close" href="javascript:void(0);"><i data-feather="x"></i></a>
+	                {/*<a className="sidebar-close" href="javascript:void(0);"><i data-feather="x"></i></a>*/}
+	            	<button 
+	            		className="button"
+	            		onClick={e => {
+	            			document.querySelector('#sidebar').style.width = 0
+	            		}}
+	            	>
+	            		close
+	            	</button>
 	            </div>
 	            <div className="inner">
 	                <ul className="sidebar-menu">

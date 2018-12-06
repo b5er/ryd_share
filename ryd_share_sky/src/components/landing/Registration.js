@@ -40,7 +40,9 @@ class Registration extends Component {
 	                                		this.setState({ formState: 'login' })
 	                                	}}
 	                                >
-	                                	<a href="javascript:void(0)">Login</a>
+	                                	<a href="#/login">
+	                                		Login
+	                                	</a>
 	                                </li>
 	                                <li 
 	                                	className={`${formState === 'signup' ? 'is-active':''}`} 
@@ -49,7 +51,9 @@ class Registration extends Component {
 	                                		this.setState({ formState: 'signup' })
 	                                	}}
 	                                >
-	                                	<a href="javascript:void(0)">Signup</a>
+	                                	<a href="#/signup">
+	                                		Signup
+	                                	</a>
 	                                </li>
 	                            </ul>
 	                        </div>
@@ -62,6 +66,7 @@ class Registration extends Component {
 		                                    	type="text" 
 		                                    	className="input is-medium"
 		                                    	onChange={e => this.setState({ username: e.target.value })} 
+		                                    	value={username}
 		                                    	placeholder="Enter username" 
 		                                    	autoComplete="no"
 		                                    />
@@ -74,6 +79,7 @@ class Registration extends Component {
 		                                    	type="password" 
 		                                    	className="input is-medium" 
 		                                    	onChange={e => this.setState({ password: e.target.value })}
+		                                    	value={password}
 		                                    	placeholder="Enter password" 
 		                                    	autoComplete="no"
 		                                    />
@@ -81,7 +87,7 @@ class Registration extends Component {
 		                            </div>
 		        					
 		        					<div className="has-text-centered">
-			                            <a className="button is-fullwidth secondary-btn is-rounded raised" href="javascript:void(0)">
+			                            <a className="button is-fullwidth secondary-btn is-rounded raised" href="#/login">
 			                            	Log in
 			                            </a>
 			                        </div>
@@ -95,6 +101,7 @@ class Registration extends Component {
 		                                    	type="text" 
 		                                    	className="input is-medium"
 		                                    	onChange={e => this.setState({ fullName: e.target.value })} 
+		                                    	value={fullName}
 		                                    	placeholder="Enter your full name" 
 		                                    	autoComplete="no"
 		                                    />
@@ -107,6 +114,7 @@ class Registration extends Component {
 		                                    	type="text" 
 		                                    	className="input is-medium"
 		                                    	onChange={e => this.setState({ username: e.target.value })} 
+		                                    	value={username}
 		                                    	placeholder="Enter username" 
 		                                    	autoComplete="no"
 		                                    />
@@ -119,6 +127,7 @@ class Registration extends Component {
 		                                    	type="password" 
 		                                    	className="input is-medium" 
 		                                    	onChange={e => this.setState({ password: e.target.value })}
+		                                    	value={password}
 		                                    	placeholder="Enter password" 
 		                                    	autoComplete="no"
 		                                    />
@@ -126,7 +135,7 @@ class Registration extends Component {
 		                            </div>
 		        					
 		        					<div className="has-text-centered">
-			                            <a className="button is-fullwidth secondary-btn is-rounded raised" href="javascript:void(0)">
+			                            <a className="button is-fullwidth secondary-btn is-rounded raised" href="#/signup">
 			                            	Signup
 			                            </a>
 			                        </div>

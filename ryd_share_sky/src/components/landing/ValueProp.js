@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class ValueProp extends Component {
 
@@ -27,7 +28,7 @@ class ValueProp extends Component {
 		                                    <p>Choose from dozen of available cars in your area</p>
 		                                </div>
 		                                <div className="card-action">
-		                                    <a href="#" className="button btn-align-md accent-btn raised">Free Trial</a>
+		                                    <Link to='/' className="button btn-align-md accent-btn raised">Free Trial</Link>
 		                                </div>
 		                            </div>
 		                        </div>
@@ -43,7 +44,7 @@ class ValueProp extends Component {
 		                                    <p>Pick up guest going the same way as you when you rent a car</p>
 		                                </div>
 		                                <div className="card-action">
-		                                    <a href="#" className="button btn-align-md secondary-btn raised">Get Started</a>
+		                                    <Link to='/' className="button btn-align-md secondary-btn raised">Get Started</Link>
 		                                </div>
 		                            </div>
 		                        </div>
@@ -59,7 +60,7 @@ class ValueProp extends Component {
 		                                    <p>Save about 10% more than uber and lyft on average (if you are a frequent rider, and need a ride at least 15 times a month).</p>
 		                                </div>
 		                                <div className="card-action">
-		                                    <a href="#" className="button btn-align-md primary-btn raised">Get Started</a>
+		                                    <Link to='/' className="button btn-align-md primary-btn raised">Get Started</Link>
 		                                </div>
 		                            </div>
 		                        </div>

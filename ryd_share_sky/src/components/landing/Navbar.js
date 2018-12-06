@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import Scroll from 'react-scroll'
 
 import Logo from '../../assets/img/logo.svg'
@@ -50,18 +50,34 @@ class Navbar extends Component {
                             <a 
                                 className="navbar-item modal-trigger" 
                                 data-modal="auth-modal"
-                                onClick={e => {
+                                href="#/login"
+                                onClick={async e => {
                                     showRegistration({ variables: { showRegistration: true } })
-                                    localStorage.setItem('x', false)
+                                    const config = {
+                                        user: {
+                                            email: 'bservia@gmail.com', 
+                                            password: 'test'
+                                        }
+                                    }
+                                    try {
+                                        const user = await fetch('http://localhost:8000/api/users/login', {
+                                            method: 'post', 
+                                            headers: {'Content-Type':'application/json'},
+                                            body: JSON.stringify(config)
+                                        })
+                                        console.log(await user.json())
+                                    } catch(e) {
+                                        console.log(e)
+                                    }
                                 }}
                             >
                                 Log in
                             </a>
                             <a 
                                 className="navbar-item"
+                                href="#/signup"
                                 onClick={e => {
                                     showRegistration({ variables: { showRegistration: true } })
-                                    localStorage.setItem('x', true)
                                 }}
                             >
                                 <span className="button signup-button rounded secondary-btn raised">

@@ -9,8 +9,8 @@ import { ApolloProvider } from 'react-apollo'
 import client from './apollo'
 
 // Smartcar
-import SmartcarProvider from './smartcar' 
-import smartcarClient from './smartcar/client'
+// import SmartcarProvider from './smartcar' 
+// import smartcarClient from './smartcar/client'
 
 // Styles
 import './styles/css/core/core.min.css'

@@ -17,7 +17,7 @@ class Dashboard extends Component {
 	render() {
 		
 		const name = "Sidnee Gye";
-		const { getItem, showItem } = this.props
+		const { getItem } = this.props
 
 		return (
 			<div>

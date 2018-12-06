@@ -68,7 +68,7 @@ class Hero extends Component {
                             </div>
 
 	                        <div className="column is-3 landing-caption has-text-centered">
-	                        	<img src={carMap} style={{ maxWidth: '50em', height: '30em', borderRadius: '5px'}}/>
+	                        	<img src={carMap} alt="Product preview" style={{ maxWidth: '50em', height: '30em', borderRadius: '5px'}}/>
 	                        </div>
 
 	                    </div>

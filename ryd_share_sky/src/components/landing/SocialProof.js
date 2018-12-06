@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 // Components
 import personOne from '../../assets/img/1.png';
@@ -72,7 +73,7 @@ class SocialProof extends Component {
 		                    <div className="column is-10 is-offset-1">
 		                        <div className="has-text-centered">
 									<figure className="image is-4by3" style={{position: 'static'}}>
-                                        <img className="pushed-image" src={appMock} style={{borderRadius: "8px"}}/>
+                                        <img className="pushed-image" src={appMock} alt="Product preview" style={{borderRadius: "8px"}}/>
 									</figure>
 		                        </div>
 		                    </div>
@@ -84,14 +85,15 @@ class SocialProof extends Component {
 		                </div>
 		        
 		                <p className="has-text-centered mt-20">
-		                    <a 
+		                    <Link
 		                    	className="button cta is-large rounded secondary-btn raised"
+		                    	to='/'
 		                    	onClick={e => {
 						      		showRegistration({ variables: { showRegistration: true } })
 						      	}}
 		                    >
 		                        Get Started
-		                    </a>
+		                    </Link>
 		                </p>
 		            </div>
 		        </section>

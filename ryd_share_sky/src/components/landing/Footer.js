@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import Logo from '../../assets/img/logo.svg'
 
@@ -19,10 +20,10 @@ class Footer extends Component {
 	                                <h3>Product</h3>
 	                            </div>
 	                            <ul className="link-list">
-	                                <li><a href="javascript:void(0)">Why choose our Product ?</a></li>
-	                                <li><a href="javascript:void(0)">Compare features</a></li>
-	                                <li><a href="javascript:void(0)">Our Roadmap</a></li>
-	                                <li><a href="javascript:void(0)">Request features</a></li>
+	                                <li><Link to='/'>Why choose our Product ?</Link></li>
+	                                <li><Link to='/'>Compare features</Link></li>
+	                                <li><Link to='/'>Our Roadmap</Link></li>
+	                                <li><Link to='/'>Request features</Link></li>
 	                            </ul>
 	                        </div>
 	                    </div>
@@ -32,10 +33,10 @@ class Footer extends Component {
 	                                <h3>Docs</h3>
 	                            </div>
 	                            <ul className="link-list">
-	                                <li><a href="#">Get Started</a></li>
-	                                <li><a href="#">User guides</a></li>
-	                                <li><a href="#">Admin guide</a></li>
-	                                <li><a href="#">Developers</a></li>
+	                                <li><Link to='/'>Get Started</Link></li>
+	                                <li><Link to='/'>User guides</Link></li>
+	                                <li><Link to='/'>Admin guide</Link></li>
+	                                <li><Link to='/'>Developers</Link></li>
 	                            </ul>
 	                        </div>
 	                    </div>
@@ -45,9 +46,9 @@ class Footer extends Component {
 	                                <h3>Blogroll</h3>
 	                            </div>
 	                            <ul className="link-list">
-	                                <li><a href="#">Latest News</a></li>
-	                                <li><a href="#">Tech articles</a></li>
-	                                <li><a href="#">Video Blog</a></li>
+	                                <li><Link to='/'>Latest News</Link></li>
+	                                <li><Link to='/'>Tech articles</Link></li>
+	                                <li><Link to='/'>Video Blog</Link></li>
 	                            </ul>
 	                        </div>
 	                    </div>

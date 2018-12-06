@@ -1,0 +1,25 @@
+{
+  "name": "ryd_share",
+  "version": "1.0.0",
+  "description": "<p align=\"center\"><img src=\"https://github.com/b5er/ryd_share_server/blob/master/Images/logo-1.jpg\" height=\"300\"><br><i> Hugo Perdomo, Sougata Dafader, Brian Servia, Mansi Kulkarni <br><br><b>Project for YHACK 2018</b></i></align>",
+  "main": "index.js",
+  "scripts": {
+    "sky": "cd ryd_share_sky && npm start",
+    "ground": "cd ryd_share_ground && npm start",
+    "start": "concurrently --kill-others \"npm run ground\" \"npm run sky\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b5er/ryd_share.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/b5er/ryd_share/issues"
+  },
+  "homepage": "https://github.com/b5er/ryd_share#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}

@@ -28,8 +28,7 @@
     "react-scripts": "2.1.1",
     "react-scroll": "^1.7.10",
     "react-typing-animation": "^1.4.0",
-    "react-typist": "^2.0.4",
-    "smartcar": "^4.2.1"
+    "react-typist": "^2.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,5 +44,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:8000"
 }

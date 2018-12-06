@@ -27,7 +27,7 @@ const typeDefs = `
 `
 
 const httpLink = new HttpLink({
-	uri: 'https://iterport-ground-prod.herokuapp.com/'
+	uri: 'http://localhost:5000'
 })
 
 const cache = new InMemoryCache()
