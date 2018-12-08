@@ -23,6 +23,8 @@ router.post('/signup', auth.optional, (req, res, next) => {
 		})
 	}
 
+	// const findUser = Users.
+
 	const finalUser = new Users(user)
 	finalUser.setPassword(user.password)
 
