@@ -4,9 +4,12 @@
   "description": "<p align=\"center\"><img src=\"https://github.com/b5er/ryd_share_server/blob/master/Images/logo-1.jpg\" height=\"300\"><br><i> Hugo Perdomo, Sougata Dafader, Brian Servia, Mansi Kulkarni <br><br><b>Project for YHACK 2018</b></i></align>",
   "main": "index.js",
   "scripts": {
-    "sky": "cd ryd_share_sky && npm start",
-    "ground": "cd ryd_share_ground && npm start",
-    "start": "concurrently --kill-others \"npm run ground\" \"npm run sky\""
+    "sky": "cd ryd_share_sky && npm run start:dev",
+    "sky_prod": "cd ryd_share_sky && npm start",
+    "ground": "cd ryd_share_ground && npm run start:dev",
+    "ground_prod": "cd ryd_share_ground && npm start",
+    "start:dev": "concurrently --kill-others \"npm run ground\" \"npm run sky\"",
+    "start": "concurrently --kill-others \"npm run ground_prod\" \"npm run sky_prod\""
   },
   "repository": {
     "type": "git",

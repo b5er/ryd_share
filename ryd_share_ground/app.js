@@ -6,8 +6,10 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const errorHandler = require('errorhandler')
 
+const config = require('../config/config')
+
 // Configure mongoose's promise to global promise
-mongoose.promise = global.Promise 
+mongoose.promise = global.Promise
 
 const isProduction = process.env.NODE_ENV === 'production'
 const PORT = process.env.PORT || 8000
@@ -21,12 +23,13 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }))
 
-if(!isProduction) 
+if(!isProduction)
 	app.use(errorHandler())
 
 // Mongoose Config
-mongoose.connect('mongodb://localhost/passport-tutorial', { useNewUrlParser: true })
-mongoose.set('debug', true)
+mongoose.connect(isProduction ? config.db_prod:config.db_dev, { useNewUrlParser: true })
+if(!isProduction)
+	mongoose.set('debug', true)
 
 // Models & Routes
 require('./models/Users')
@@ -36,13 +39,13 @@ app.use(require('./routes'))
 if(!isProduction) {
 	app.use(function (err, req, res, next) {
 		console.log(err.message)
-		if(!err.statusCode) 
+		if(!err.statusCode)
 			err.statusCode = 500
 		res.status(err.statusCode).send(err.message)
 
 		res.json({
 			errors: {
-				message: err.message, 
+				message: err.message,
 				error: err
 			}
 		})

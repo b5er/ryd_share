@@ -1,0 +1,4 @@
+module.exports = {
+  db_prod: '',
+  db_dev: 'mongodb://localhost:27017/ryd_share'
+}

@@ -7,8 +7,9 @@ import { resolvers, defaults } from './resolvers'
 
 const typeDefs = `
 
-	type Registration {
-		showRegistration: Boolean!
+	type Auth {
+		showAuth: Boolean!
+		type: String!
 	}
 
 	type Item {
@@ -16,12 +17,12 @@ const typeDefs = `
 	}
 
 	type Mutation {
-		toggleRegistration(showRegistration: Boolean!): Registration
+		toggleAuth(showAuth: Boolean!, type: String!): Auth
 		toggleItem(showItem: String!): Item
 	}
 
 	type Query {
-		showRegistration: Registration
+		showAuth: Auth
 		showItem: Item
 	}
 `

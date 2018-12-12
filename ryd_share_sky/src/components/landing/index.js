@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import Hero from './Hero'
 import ValueProp from './ValueProp'
 import SocialProof from './SocialProof'
-import Registration from './Registration'
+import Registration from './registration'
 import Pricing from './Pricing'
 import Footer from './Footer'
 
@@ -12,13 +12,13 @@ class Landing extends Component {
 	render() {
 
 		return (
-			<div>    
+			<div>
 		        <Hero />
 		        <Registration />
 		        <ValueProp />
 		        <SocialProof />
 		        <Pricing />
-		        <Footer />      
+		        <Footer />
 			</div>
 		)
 	}

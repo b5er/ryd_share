@@ -9,23 +9,23 @@ import appMock from '../../assets/img/app-mockup.png';
 
 // Apollo
 import { compose, graphql } from 'react-apollo'
-import { SHOW_REGISTRATION, GET_REGISTRATION } from '../../graphql/landing'
+import { SHOW_AUTH } from '../../graphql/landing'
 
 class SocialProof extends Component {
 	render() {
 
-		const { showRegistration } = this.props
-		
+		const { showAuth } = this.props
+
 		return (
 			<div>
 				<section className="section is-medium section-secondary">
 		            <div className="container">
-		        
+
 		                <div className="title-wrapper has-text-centered">
 		                    <h2 className="title is-2 light-text is-spaced">Our Clients love us !</h2>
 		                    <h3 className="subtitle is-5 light-text">Our passion is to make your live simpler, one ride at a time.</h3>
 		                </div>
-		        
+
 		                <div className="content-wrapper">
 		                    <div className="columns is-vcentered">
 		                        <div className="column is-4">
@@ -53,7 +53,7 @@ class SocialProof extends Component {
 		                        <div className="column is-4">
 		                            <figure className="testimonial">
 		                                <blockquote>
-		                                	Life has been much more doable with Iterport. Now I can get to the places I want, whenever my car is in the shop. There are rarely cars unavailable in my area, so it works out pretty well. 
+		                                	Life has been much more doable with Iterport. Now I can get to the places I want, whenever my car is in the shop. There are rarely cars unavailable in my area, so it works out pretty well.
 		                                </blockquote>
 		                                <div className="author">
 		                                    <img src={personThree} alt=""/>
@@ -68,29 +68,29 @@ class SocialProof extends Component {
 
 		        <section className="section section-feature-grey is-medium">
 		            <div className="container">
-		        
+
 		                <div className="columns">
 		                    <div className="column is-10 is-offset-1">
 		                        <div className="has-text-centered">
 									<figure className="image is-4by3" style={{position: 'static'}}>
-                                        <img className="pushed-image" src={appMock} alt="Product preview" style={{borderRadius: "8px"}}/>
+                  	<img className="pushed-image" src={appMock} alt="Product preview" style={{borderRadius: "8px"}}/>
 									</figure>
 		                        </div>
 		                    </div>
 		                </div>
-		        
+
 		                <div className="title-wrapper has-text-centered">
 		                    <h2 className="title is-2">One Platform</h2>
 		                    <h3 className="subtitle is-5 is-muted">To rule them All</h3>
 		                </div>
-		        
+
 		                <p className="has-text-centered mt-20">
 		                    <Link
 		                    	className="button cta is-large rounded secondary-btn raised"
 		                    	to='/'
 		                    	onClick={e => {
-						      		showRegistration({ variables: { showRegistration: true } })
-						      	}}
+									      		showAuth({ variables: { showAuth: true, type: 'signup' } })
+									      	}}
 		                    >
 		                        Get Started
 		                    </Link>
@@ -103,6 +103,5 @@ class SocialProof extends Component {
 }
 
 export default compose(
-	graphql(SHOW_REGISTRATION, { name: 'showRegistration' }), 
-    graphql(GET_REGISTRATION, { name: 'getRegistration' })
+	graphql(SHOW_AUTH, { name: 'showAuth' })
 )(SocialProof)

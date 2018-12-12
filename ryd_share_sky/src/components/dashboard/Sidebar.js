@@ -25,7 +25,7 @@ class Sidebar extends Component {
 	                <img src={Logo} alt="project logo" />
 	                <strong><p className="is-size-4" style={{ color: 'white' }}>Iterport</p></strong>
 	                {/*<a className="sidebar-close" href="javascript:void(0);"><i data-feather="x"></i></a>*/}
-	            	<button 
+	            	<button
 	            		className="button"
 	            		onClick={e => {
 	            			document.querySelector('#sidebar').style.width = 0
@@ -39,7 +39,7 @@ class Sidebar extends Component {
 	                    <li>
 	                    	<span className="nav-section-title" />
 	                    </li>
-	                    <li 
+	                    <li
 	                    	className={`${tab === 'history' ? 'is-dark-blue':''}`}
 	                    	onClick={e => {
 	                    		e.preventDefault()
@@ -47,12 +47,12 @@ class Sidebar extends Component {
 	                    		showItem({ variables: { showItem: 'history' } })
 	                    	}}
 	                    >
-	                    	<a href="#">
+	                    	<a href="#/history">
 	                    		<span className="fa fa-user fa-lg" />
 	                    		History
 	                    	</a>
 	                    </li>
-	                    <li 
+	                    <li
 	                    	className={`${tab === 'carList' ? 'is-dark-blue':''}`}
 	                    	onClick={e => {
 	                    		e.preventDefault()
@@ -60,12 +60,12 @@ class Sidebar extends Component {
 	                    		showItem({ variables: { showItem: 'carList' } })
 	                    	}}
 	                    >
-	                    	<a href="#">
+	                    	<a href="#/carlist">
 	                    		<span className="fas fa-car-alt fa-lg" />
 	                    		Car list
 	                    	</a>
 	                    </li>
-	                    <li 
+	                    <li
 	                    	className={`${tab === 'bank' ? 'is-dark-blue':''}`}
 	                    	onClick={e => {
 	                    		e.preventDefault()
@@ -73,7 +73,7 @@ class Sidebar extends Component {
 	                    		showItem({ variables: { showItem: 'bank' } })
 	                    	}}
 	                    >
-	                    	<a href="#">
+	                    	<a href="#/bank">
 	                    		<span className="fas fa-piggy-bank fa-lg" />
 	                    		Bank
 	                    	</a>

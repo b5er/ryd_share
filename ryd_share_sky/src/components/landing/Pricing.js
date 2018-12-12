@@ -2,20 +2,28 @@ import React, { Component } from 'react'
 
 // Apollo
 import { compose, graphql } from 'react-apollo'
-import { SHOW_REGISTRATION, GET_REGISTRATION } from '../../graphql/landing'
+import { SHOW_AUTH } from '../../graphql/landing'
 
 
 class Pricing extends Component {
 	render() {
 
-		const { showRegistration } = this.props
+		const { showAuth } = this.props
 
 		return (
 			<section id="pricing" className="section section-light-grey is-medium">
 	            <div className="pricing-table">
 				  <div className="pricing-plan is-warning">
 				    <div className="plan-header">Community</div>
-				    <div className="plan-price"><span className="plan-price-amount"><span className="plan-price-currency">$</span>20</span>/month</div>
+				    <div className="plan-price">
+							<span className="plan-price-amount">
+								<span className="plan-price-currency">
+									$
+								</span>
+								20
+							</span>
+							/month
+						</div>
 				    <div className="plan-items">
 				      <div className="plan-item">Up to 300 miles /month</div>
 				      <div className="plan-item">Pick up guest on the way</div>
@@ -23,10 +31,10 @@ class Pricing extends Component {
 				      <div className="plan-item">-</div>
 				    </div>
 				    <div className="plan-footer">
-				      <button 
+				      <button
 				      	className="button is-fullwidth"
 				      	onClick={e => {
-				      		showRegistration({ variables: { showRegistration: true } })
+				      		showAuth({ variables: { showAuth: true, type: 'signup' } })
 				      	}}
 				      >
 				      	Choose
@@ -44,10 +52,10 @@ class Pricing extends Component {
 				      <div className="plan-item">Convenient drop off spot</div>
 				    </div>
 				    <div className="plan-footer">
-				      <button 
+				      <button
 				      	className="button is-fullwidth"
 				      	onClick={e => {
-				      		showRegistration({ variables: { showRegistration: true } })
+									showAuth({ variables: { showAuth: true, type: 'signup' } })
 				      	}}
 				      >
 				      	Choose
@@ -61,14 +69,14 @@ class Pricing extends Component {
 				    <div className="plan-items">
 				      <div className="plan-item">Up to 5,000 miles /month</div>
 				      <div className="plan-item">No guest pick up</div>
-				      <div className="plan-item"></div>
+				      <div className="plan-item">Luxury vehicle selection</div>
 				      <div className="plan-item">International travel</div>
 				    </div>
 				    <div className="plan-footer">
-				      <button 
+				      <button
 				      	className="button is-fullwidth"
 				      	onClick={e => {
-				      		showRegistration({ variables: { showRegistration: true } })
+				      		showAuth({ variables: { showAuth: true, type: 'signup' } })
 				      	}}
 				      >
 				      	Choose
@@ -82,6 +90,5 @@ class Pricing extends Component {
 }
 
 export default compose(
-    graphql(SHOW_REGISTRATION, { name: 'showRegistration' }), 
-    graphql(GET_REGISTRATION, { name: 'getRegistration' })
+    graphql(SHOW_AUTH, { name: 'showAuth' })
 )(Pricing)

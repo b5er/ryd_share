@@ -1,14 +1,17 @@
 import gql from 'graphql-tag'
 
-export const SHOW_REGISTRATION = gql`
-	mutation toggleRegistration($showRegistration: Boolean!) {
-		toggleRegistration(showRegistration: $showRegistration) @client
+export const SHOW_AUTH = gql`
+	mutation toggleAuth($showAuth: Boolean!, $type: String!) {
+		toggleAuth(showAuth: $showAuth, type: $type) @client
 	}
 `
 
-export const GET_REGISTRATION = gql`
+export const GET_AUTH = gql`
 	{
-		showRegistration @client
+		showAuth @client {
+			showAuth
+			type
+		}
 	}
 `
 
