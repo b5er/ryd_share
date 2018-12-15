@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon app.js",
-    "start": "node app.js"
+    "start:dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -22,9 +22,12 @@
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.14",
     "morgan": "^1.9.1",
-    "nodemon": "^1.18.7",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "smartcar": "^4.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
   }
 }

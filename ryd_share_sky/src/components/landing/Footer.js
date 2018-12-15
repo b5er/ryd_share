@@ -75,7 +75,7 @@ class Footer extends Component {
 	                                        </a>
 	                                    </div>
 	                                </nav>
-	        
+
 	                            </div>
 	                        </div>
 	                    </div>

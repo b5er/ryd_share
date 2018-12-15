@@ -6,6 +6,10 @@ import ProfilePic from "../../assets/img/profile.png";
 import { compose, graphql } from 'react-apollo'
 import { SHOW_ITEM, GET_ITEM } from '../../graphql/landing'
 
+// Utils
+import { getPayload } from '../../utils/checkAuth'
+import { smartcar } from '../../utils/smartcar'
+
 import Sidebar from './Sidebar'
 import History from './History'
 import CarList from './CarList'
@@ -13,10 +17,16 @@ import Bank from './Bank'
 
 class Dashboard extends Component {
 
+	componentDidMount() {
+		if(!getPayload().isOwner) {
+			const carInfo = smartcar.openDialog({ forcePrompt: true })
+			console.log(carInfo)
+		}
+	}
 
 	render() {
-		
-		const name = "Sidnee Gye";
+
+		const user = getPayload()
 		const { getItem } = this.props
 
 		return (
@@ -31,9 +41,16 @@ class Dashboard extends Component {
 	                                    <img className="is-rounded img-glow" src={ProfilePic} alt=""/>
 	                                </figure>
 									<p className="title has-text-centered">
-										{name}
+										{user.fullName}
 									</p>
-									<p className="subtitle has-text-centered">(Renter)</p>
+									<p className="subtitle has-text-centered">
+										{
+												user.isOwner ?
+												'Car Owner'
+												:
+												'Renter'
+										}
+									</p>
 								</div>
 							</div>
 							<div className="columns is-centered">

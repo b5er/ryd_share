@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import HeroImage from '../../assets/img/hero_image.svg'
-import SmartCar from '../../assets/img/smartcar.svg'
-import carMap from '../../assets/img/map.png'
+// import HeroImage from '../../assets/img/hero_image.svg'
+// import SmartCar from '../../assets/img/smartcar.svg'
+// import carMap from '../../assets/img/map.png'
 
 // Components
 import Navbar from './Navbar'
@@ -15,7 +15,7 @@ class Hero extends Component {
 		const ScrollLink = Scroll.Link
 
 		return (
-			<section className="hero is-fullheight is-primary is-bold">
+			<section className="hero is-fullheight is-bold" style={{ backgroundColor: '#474F61' }}>
 
 	            <Navbar />
 
@@ -26,12 +26,12 @@ class Hero extends Component {
 
                             <div className="column is-5">
                                 <figure className="image is-4by3">
-                                    <img src={HeroImage} alt="Description" style={{transform: "scale(2.8)"}} />
+                                    {/*<img src={HeroImage} alt="Description" style={{transform: "scale(2.8)"}} />*/}
                                 </figure>
                             </div>
 
 	                        <div className="column is-3 landing-caption has-text-centered">
-	                        	<img src={carMap} alt="Product preview" style={{ maxWidth: '50em', height: '30em', borderRadius: '5px'}}/>
+	                        	{/*<img src={carMap} alt="Product preview" style={{ maxWidth: '50em', height: '30em', borderRadius: '5px'}}/>*/}
 	                        </div>
 
 	                    </div>
@@ -51,7 +51,7 @@ class Hero extends Component {
 	            <div className="hero-foot mb-20">
 	                <div className="container">
 	                    <p className="title">Powered by
-                            <img src={SmartCar} alt="" style={{margin: '0 1em'}} />
+                            {/*<img src={SmartCar} alt="" style={{margin: '0 1em'}} />*/}
 						</p>
 	                </div>
 	            </div>

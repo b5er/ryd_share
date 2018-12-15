@@ -10,7 +10,6 @@ passport.use(new LocalStrategy({
 }, async (email, password, done) => {
 	try {
 		const user = await Users.findOne({ email })
-		console.log(user)
 		if(!user || !user.validatePassword(password))
 			return done(null, false, { errors: { 'email or password': 'is invalid' }})
 		return done(null, user)

@@ -32,28 +32,32 @@ router.post('/signup', auth.optional, async (req, res, next) => {
 		})
 	}
 
-	Users.find({
-		email
-	}, (e, previousUsers) => {
-		if(e) {
+	let prevUsers = null
+	try {
+		prevUsers = await Users.find({ email })
+		if(prevUsers.length > 0) {
 			return res.send({
 				success: false,
-				message: 'Error: server error'
-			})
-		} else if(previousUsers.length > 0) {
-			return res.send({
-				success: false,
-				message: 'Error: already have an account'
+				message: 'Error: Account already exist'
 			})
 		}
-	})
+	} catch(e) {
+		return res.send({
+			success: false,
+			message: 'Error: Server error'
+		})
+	}
 
-	const finalUser = new Users(user)
-	finalUser.setPassword(user.password)
-
-	return finalUser.save()
-		.then(() => res.json({ user: finalUser.toAuthJSON() }))
-		.catch(e => console.log(e))
+	if(prevUsers.length == 0) {
+		const finalUser = new Users(user)
+		finalUser.setPassword(user.password)
+		try {
+			const savedUser = await finalUser.save()
+			return res.json({ user: finalUser.toAuthJSON() })
+		} catch(e) {
+			console.log(e)
+		}
+	}
 })
 
 router.post('/login', auth.optional, (req, res, next) => {
@@ -91,6 +95,7 @@ router.post('/login', auth.optional, (req, res, next) => {
 		})
 	})(req, res, next)
 })
+
 
 // router.post('logout', auth.required, (req, res, next) => {
 // 	const { payload: { id } } = req

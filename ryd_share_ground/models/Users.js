@@ -11,11 +11,17 @@ const UsersSchema = new Schema({
 	},
 	email: {
 		type: String,
-		default: ''
+		default: '',
+		required: true
 	},
 	password: {
 		type: String,
-		default: ''
+		default: '',
+		required: true
+	},
+	isOwner: {
+		type: Boolean,
+		default: false
 	},
 	isDeleted: {
 		type: Boolean,
@@ -39,13 +45,14 @@ UsersSchema.methods.validatePassword = function(password) {
 	return bcrypt.compareSync(password, this.password)
 }
 
-UsersSchema.methods.generateJWT = () => {
+UsersSchema.methods.generateJWT = function() {
 	const today = new Date()
 	const expirationDate = new Date(today)
 	expirationDate.setDate(today.getDate() + 60)
 
 	return jwt.sign({
 		fullName: this.fullName,
+		isOwner: this.isOwner,
 		email: this.email,
 		id: this._id,
 		exp: parseInt(expirationDate.getTime() / 1000, 10),
@@ -56,6 +63,7 @@ UsersSchema.methods.toAuthJSON = function() {
 	return {
 		_id: this._id,
 		fullName: this.fullName,
+		isOwner: this.isOwner,
 		email: this.email,
 		token: this.generateJWT()
 	}

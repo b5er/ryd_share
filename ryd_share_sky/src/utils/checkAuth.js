@@ -6,9 +6,9 @@ export const checkAuth = () => {
 
   if(!token)
     return false
+    
   try {
     const { exp } = decode(token)
-
     if(exp < (new Date().getTime() / 1000))
       return false
   } catch(e) {
@@ -17,9 +17,7 @@ export const checkAuth = () => {
   return true
 }
 
-export const getId = () => {
-  if(!getStorageItem('token'))
-    return null
-  const { _id } = decode(getStorageItem('token'))
-  return _id
+export const getPayload = () => {
+  const token = getStorageItem('token')
+  return token ? decode(token):null
 }

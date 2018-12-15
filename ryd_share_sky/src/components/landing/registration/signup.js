@@ -8,13 +8,14 @@ class Signup extends Component {
       fullName: '',
       email: '',
       password: '',
-      isLoading: false
+      isLoading: false,
+      isOwner: false
     }
   }
 
   render() {
 
-    const { fullName, email, password, isLoading } = this.state
+    const { fullName, email, password, isLoading, isOwner } = this.state
     const {
       auth,
       checkAuth,
@@ -34,7 +35,8 @@ class Signup extends Component {
               user: {
                   fullName,
                   email,
-                  password
+                  password,
+                  isOwner
               }
           }
           try {
@@ -96,6 +98,24 @@ class Signup extends Component {
                     autoComplete="new-password"
                   />
               </div>
+          </div>
+
+          <div className="field">
+            <div className="columns">
+              <div className="column is-3">
+                <label htmlFor="exampleCheckboxDefault">Car owner?</label>
+              </div>
+              <div className="column">
+                <input
+                  className="is-checkradio"
+                  id="exampleCheckboxDefault"
+                  type="checkbox"
+                  name="exampleCheckboxDefault"
+                  onChange={() => this.setState({ isOwner: !isOwner }) }
+                  checked={isOwner}
+                />
+              </div>
+            </div>
           </div>
 
           <div className="has-text-centered">
