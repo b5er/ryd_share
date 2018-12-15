@@ -5,10 +5,11 @@ export const smartcar = new Smartcar({
   redirectUri: 'https://javascript-sdk.smartcar.com/redirect-2.0.0?app_origin=http://localhost:3000',
   scope: ['read_vehicle_info', 'read_odometer'],
   testMode: true,
-  onComplete: (err, code) => {
+  onComplete: async (err, code) => {
     if(err)
       return err
-
-    
+      console.log(code)
+      const vehicles = await fetch('https://api.smartcar.com/v1.0/vehicles')
+      console.log(vehicles)
   }
 })
