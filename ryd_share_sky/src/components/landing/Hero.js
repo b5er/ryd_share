@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // import HeroImage from '../../assets/img/hero_image.svg'
-// import SmartCar from '../../assets/img/smartcar.svg'
+import SmartCar from '../../assets/img/smartcar.svg'
 // import carMap from '../../assets/img/map.png'
 
 // Components
@@ -48,11 +48,14 @@ class Hero extends Component {
 	                	</div>
 	                </div>
 	            </div>
-	            <div className="hero-foot mb-20">
+	            <div className="hero-foot">
 	                <div className="container">
-	                    <p className="title">Powered by
-                            {/*<img src={SmartCar} alt="" style={{margin: '0 1em'}} />*/}
-						</p>
+	                    <p className="subtitle" style={{ color: 'white' }}>
+												Powered by
+												<a href="https://smartcar.com/" target="_blank" rel="noopener noreferrer">
+                        	<img width="25em" src={SmartCar} alt="Smartcar logo" style={{ margin: '0 .5em' }} />
+												</a>
+											</p>
 	                </div>
 	            </div>
 

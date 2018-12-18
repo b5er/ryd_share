@@ -5,11 +5,23 @@ export const smartcar = new Smartcar({
   redirectUri: 'https://javascript-sdk.smartcar.com/redirect-2.0.0?app_origin=http://localhost:3000',
   scope: ['read_vehicle_info', 'read_odometer'],
   testMode: true,
-  onComplete: async (err, code) => {
+  onComplete: async (err, code, status) => {
     if(err)
       return err
-      console.log(code)
-      const vehicles = await fetch('https://api.smartcar.com/v1.0/vehicles')
-      console.log(vehicles)
+
+      try {
+        // Could of used post request for both, but in this case having them as this is faster within the network.
+        const accessToken = await fetch(`http://localhost:8000/api/smartcar/exchange?code=${code}`)
+        const { token } = await accessToken.json()
+        const vehicles = await fetch(`http://localhost:8000/api/smartcar/vehicle?token=${JSON.stringify(token)}`)
+        const vehiclesInfo = await vehicles.json()
+        getVehicles(vehiclesInfo)
+      } catch(e) {
+        console.log(e)
+      }
   }
 })
+
+export const getVehicles = vehicles => {
+  console.log('here', vehicles)
+}

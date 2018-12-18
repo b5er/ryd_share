@@ -20,7 +20,7 @@ class Navbar extends Component {
                     <div className="navbar-brand">
                         <Link to="/" className="navbar-item">
                             <img src={Logo} alt="Project Logo" width="60" height="500" />
-                            <h1 className="title">
+                            <h1 className="title" style={{ color: 'white' }}>
                                 Iterport
                             </h1>
                         </Link>

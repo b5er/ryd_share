@@ -8,7 +8,7 @@ import { SHOW_ITEM, GET_ITEM } from '../../graphql/landing'
 
 // Utils
 import { getPayload } from '../../utils/checkAuth'
-import { smartcar } from '../../utils/smartcar'
+import { smartcar, getVehicles } from '../../utils/smartcar'
 
 import Sidebar from './Sidebar'
 import History from './History'
@@ -19,8 +19,8 @@ class Dashboard extends Component {
 
 	componentDidMount() {
 		if(!getPayload().isOwner) {
-			const carInfo = smartcar.openDialog({ forcePrompt: true })
-			console.log(carInfo)
+			smartcar.openDialog({ forcePrompt: true })
+			// console.log(carInfo)
 		}
 	}
 

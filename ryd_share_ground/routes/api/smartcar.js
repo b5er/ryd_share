@@ -6,33 +6,68 @@ const smartcar = require('smartcar')
 
 const client = new smartcar.AuthClient({
   clientId: '754ca30a-655a-4b86-a9a1-ef2916cf1fe5',
-  clientSecret: 'b1b0062e-f028-4958-af0e-9a3a859e0865',
+  clientSecret: 'b33b52ff-40f7-4489-8b4c-3f119c7fa725',
   redirectUri: 'https://javascript-sdk.smartcar.com/redirect-2.0.0?app_origin=http://localhost:3000',
   scope: ['read_vehicle_info', 'read_odometer'],
   testMode: true
 })
 
-router.get('/callback', (req, res, next) => {
-  let access = null
-  console.log(req.query.code)
+let access
+
+router.get('/exchange', async (req, res, next) => {
+  const { query: { code } } = req
+
   if(req.query.error)
     return next(new Error(req.query.error))
 
-  return client.exchangeCode(req.query.code)
-    .then(_access => {
-      access = _access
-      return smartcar.getVehicleIds(access.accessToken)
+  try {
+    const accessToken = await client.exchangeCode(code)
+
+    return res.send({
+      success: true,
+      token: accessToken
     })
-    .then(res => {
-      const vehicle = new smartcar.Vehicle(res.vehicles[0], access.accessToken)
-      return vehicle.info()
+
+  } catch(e) {
+    console.log(e)
+  }
+
+})
+
+router.get('/vehicle', async (req, res) => {
+  const token = req.query.token ? JSON.parse(req.query.token):null
+  if(!token) {
+    return res.send({
+      success: false,
+      message: 'Error: no valid token'
     })
-    .then(data => {
-      return res.json(data)
+  }
+
+  try {
+    const vehicleIds = await smartcar.getVehicleIds(token.accessToken)
+    let vehicles = {}
+    for(let i = 0; i < vehicleIds.vehicles.length; i++) {
+      const ids = vehicleIds.vehicles[i]
+      const vehicle = new smartcar.Vehicle(ids, token.accessToken)
+      try {
+        vehicles[ids] = await vehicle.info()
+      } catch(e) {
+        console.log(e)
+        vehicles[ids] = null
+      }
+    }
+
+    res.send({
+      success: true,
+      vehicles
     })
-    .catch(e => {
-      console.log(e)
+
+  } catch(e) {
+    res.send({
+      success: false,
+      message: 'Error: vehicle info'
     })
+  }
 })
 
 module.exports = router
