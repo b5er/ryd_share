@@ -14,15 +14,3 @@ export const GET_AUTH = gql`
 		}
 	}
 `
-
-export const SHOW_ITEM = gql`
-	mutation toggleItem($showItem: String!) {
-		toggleItem(showItem: $showItem) @client
-	}
-`
-
-export const GET_ITEM = gql`
-	{
-		showItem @client
-	}
-`

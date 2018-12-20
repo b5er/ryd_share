@@ -7,12 +7,14 @@ export const defaults = {
 		type: 'login',
 		__typename: 'auth'
 	},
-	showItem: 'history'
+	// availableCars: {
+	//
+	// },
+	showItem: 'ride'
 }
 
 export const resolvers = {
 	Mutation: {
-		// auth = { showAuth: <Boolean>, type: <String> }
 		toggleAuth: (_, auth, { cache }) => {
 			const showAuth = {
 				...auth,
@@ -21,6 +23,14 @@ export const resolvers = {
 			cache.writeData({ data: { showAuth } })
 			return null
 		},
+
+		// availableCars: (_, vehicles, { cache }) => {
+		// 	const cars = {
+		// 		...vehicles
+		// 	}
+		// 	cache.writeData({ data: { cars } })
+		// 	return null
+		// },
 
 		toggleItem: (_, { showItem }, { cache }) => {
 			cache.writeData({ data: { showItem } })

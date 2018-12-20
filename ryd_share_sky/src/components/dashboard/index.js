@@ -1,85 +1,81 @@
 import React, { Component } from 'react'
 
-import ProfilePic from "../../assets/img/profile.png";
+// Components
+import Navbar from './Navbar'
+import Sidenav from './Sidenav'
+
+import Ride from './general/Ride'
+import Vehicle from './general/Vehicle'
+import History from './administration/History'
+import Invite from './administration/Invite'
+import AddVehicle from './administration/AddVehicle'
+import Review from './administration/riders/Review'
+import Block from './administration/riders/Block'
+import Payments from './transactions/Payments'
+import Transfers from './transactions/Transfers'
+import Profits from './transactions/Profits'
 
 // Apollo
 import { compose, graphql } from 'react-apollo'
-import { SHOW_ITEM, GET_ITEM } from '../../graphql/landing'
+import { SHOW_ITEM, GET_ITEM } from '../../graphql/dashboard'
 
 // Utils
 import { getPayload } from '../../utils/checkAuth'
-import { smartcar, getVehicles } from '../../utils/smartcar'
+import { smartcar } from '../../utils/smartcar'
 
-import Sidebar from './Sidebar'
-import History from './History'
-import CarList from './CarList'
-import Bank from './Bank'
 
 class Dashboard extends Component {
 
 	componentDidMount() {
-		if(!getPayload().isOwner) {
+		if(getPayload().isOwner) {
 			smartcar.openDialog({ forcePrompt: true })
-			// console.log(carInfo)
+		}
+	}
+
+	menuSelect = item => {
+		switch(item) {
+			case 'vehicle':
+				return <Vehicle />
+			case 'history':
+				return <History />
+			case 'invite':
+				return <Invite />
+			case 'add':
+				return <AddVehicle />
+			case 'review':
+				return <Review />
+			case 'block':
+				return <Block />
+			case 'payments':
+				return <Payments />
+			case 'transfers':
+				return <Transfers />
+			case 'profits':
+				return <Profits />
+			default:
+				return <Ride />
 		}
 	}
 
 	render() {
 
-		const user = getPayload()
 		const { getItem } = this.props
 
 		return (
 			<div>
-				<section className="hero is-small">
-					<Sidebar />
-					<div className="hero-body">
-						<div className="container">
-	                        <div className="columns is-centered">
-								<div className="column is-2 is-offset-2">
-	                                <figure className="image" style={{width: "200px", height: "200px"}}>
-	                                    <img className="is-rounded img-glow" src={ProfilePic} alt=""/>
-	                                </figure>
-									<p className="title has-text-centered">
-										{user.fullName}
-									</p>
-									<p className="subtitle has-text-centered">
-										{
-												user.isOwner ?
-												'Car Owner'
-												:
-												'Renter'
-										}
-									</p>
-								</div>
-							</div>
-							<div className="columns is-centered">
-								<div className="column is-8 is-offset-2 notification is-dark">
-									<p className="title">ID:
-										<span className="has-text-danger" style={{paddingLeft: "20px"}}>38ca7b7c-7c60-4702-972a-930f211dbaf9</span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+				<Navbar />
 
-				{
-					getItem.showItem === 'history' ?
-					<History />
-					:
-					(
-						getItem.showItem === 'carList' ?
-						<CarList />
-						:
-						(
-							getItem.showItem === 'bank' ?
-							<Bank />
-							:
-							<History />
-						)
-					)
-				}
+				<div className="section">
+					<div className="columns">
+						<aside className="column is-2">
+							<Sidenav />
+						</aside>
+
+						<main className="column">
+							{this.menuSelect(getItem.showItem)}
+						</main>
+					</div>
+				</div>
 			</div>
 		)
 	}

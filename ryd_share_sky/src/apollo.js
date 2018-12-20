@@ -16,15 +16,22 @@ const typeDefs = `
 		showItem: String!
 	}
 
+	type AvailableCars {
+		vehicles: String!
+	}
+
 	type Mutation {
 		toggleAuth(showAuth: Boolean!, type: String!): Auth
 		toggleItem(showItem: String!): Item
+		availableCars(vehicles: String!): AvailableCars
 	}
 
 	type Query {
 		showAuth: Auth
 		showItem: Item
+		vehicles: AvailableCars
 	}
+
 `
 
 const httpLink = new HttpLink({
