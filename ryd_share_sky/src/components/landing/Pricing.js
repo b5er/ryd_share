@@ -33,8 +33,12 @@ class Pricing extends Component {
 				    <div className="plan-footer">
 				      <button
 				      	className="button is-fullwidth"
-				      	onClick={e => {
-				      		showAuth({ variables: { showAuth: true, type: 'signup' } })
+				      	onClick={async e => {
+									try {
+										await showAuth({ variables: { showAuth: true, type: 'signup' } })
+									} catch(e) {
+										console.log(e)
+									}
 				      	}}
 				      >
 				      	Choose
@@ -54,8 +58,12 @@ class Pricing extends Component {
 				    <div className="plan-footer">
 				      <button
 				      	className="button is-fullwidth"
-				      	onClick={e => {
-									showAuth({ variables: { showAuth: true, type: 'signup' } })
+				      	onClick={async e => {
+									try {
+										await showAuth({ variables: { showAuth: true, type: 'signup' } })
+									} catch(e) {
+										console.log(e)
+									}
 				      	}}
 				      >
 				      	Choose
@@ -75,8 +83,12 @@ class Pricing extends Component {
 				    <div className="plan-footer">
 				      <button
 				      	className="button is-fullwidth"
-				      	onClick={e => {
-				      		showAuth({ variables: { showAuth: true, type: 'signup' } })
+				      	onClick={async e => {
+									try {
+										await showAuth({ variables: { showAuth: true, type: 'signup' } })
+									} catch(e) {
+										console.log(e)
+									}
 				      	}}
 				      >
 				      	Choose

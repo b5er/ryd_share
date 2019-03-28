@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-// import HeroImage from '../../assets/img/hero_image.svg'
 import SmartCar from '../../assets/img/smartcar.svg'
-// import carMap from '../../assets/img/map.png'
+import CarSharing from '../../assets/img/car_sharing.gif' // Link/Credit: https://gifer.com/en/H7d1
 
 // Components
 import Navbar from './Navbar'
@@ -22,30 +21,25 @@ class Hero extends Component {
 	            <div className="hero-body">
 	                <div className="container">
 
-	                    <div className="columns is-vcentered">
-
-                            <div className="column is-5">
-                                <figure className="image is-4by3">
-                                    {/*<img src={HeroImage} alt="Description" style={{transform: "scale(2.8)"}} />*/}
-                                </figure>
-                            </div>
-
-	                        <div className="column is-3 landing-caption has-text-centered">
-	                        	{/*<img src={carMap} alt="Product preview" style={{ maxWidth: '50em', height: '30em', borderRadius: '5px'}}/>*/}
+	                    <div className="columns is-vcentered is-multiline">
+	                        <div className="column is-12 landing-caption has-text-centered">
+	                        	<img src={CarSharing} alt="Product preview" style={{ minWidth: '60em', height: '40em', borderRadius: '5px'}}/>
 	                        </div>
-
-	                    </div>
-	                    <div className="has-text-right" style={{ marginRight: '18em', marginTop: '2em' }}>
-		                    <ScrollLink
-		                    	className="button is-outlined is-danger is-large is-rounded glow"
-		                    	to="features"
+													<div className="column">
+														<div className="has-text-centered" style={{ marginTop: '2em' }}>
+					                    <ScrollLink
+					                    	className="button is-outlined is-danger is-large is-rounded glow"
+					                    	to="features"
                                 smooth={true}
                                 offset={20}
                                 duration={500}
-		                    >
-			                	Get Started
-			                </ScrollLink>
-	                	</div>
+					                    >
+						                		Get Started
+						                	</ScrollLink>
+					                	</div>
+													</div>
+											</div>
+
 	                </div>
 	            </div>
 	            <div className="hero-foot">

@@ -52,9 +52,12 @@ class Navbar extends Component {
                                 data-modal="auth-modal"
 																style={{ cursor: 'pointer' }}
                                 onClick={async e => {
-																	try{}
-																		showAuth({ variables: { showAuth: true, type: 'login' } })
-                                }}
+																	try{
+																		await showAuth({ variables: { showAuth: true, type: 'login' } })
+																	} catch(e) {
+																		console.log(e)
+																	}
+																}}
                             >
                                 Log in
                             </span>

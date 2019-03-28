@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import ProfilePic from '../../assets/img/profile.png'
 
@@ -8,9 +9,9 @@ class Navbar extends Component {
       <header className="hero is-light" style={{ backgroundColor: '#474F61' }}>
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <a className="navbar-item" href={'/'}>
+            <Link to={'/dashboard'} className="navbar-item">
               <img src={ProfilePic} style={{ maxHeight: '4em' }} alt="Profile Icon" />
-            </a>
+            </Link>
             {/*
             <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
               <span aria-hidden="true" />
@@ -22,9 +23,9 @@ class Navbar extends Component {
 
           <div id="navbarBasicExample" className="navbar-menu">
             <div className="navbar-end">
-              <div className="navbar-item" style={{ padding: '2em', cursor: 'pointer', backgroundColor: '#e7e7e7' }}>
+              <Link to={'/'} className="navbar-item" style={{ padding: '2em', cursor: 'pointer', backgroundColor: '#e7e7e7' }}>
                 <i className="fas fa-power-off fa-lg" />
-              </div>
+              </Link>
             </div>
           </div>
         </nav>

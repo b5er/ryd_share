@@ -111,7 +111,7 @@ router.post('/login', auth.optional, (req, res, next) => {
 // GET current route (required, only authenticated users have accesss)
 router.get('/dashboard', auth.required, (req, res, next) => {
 	const { payload: { id } } = req
-	console.log('fesss')
+
 	return Users.findById(id)
 		.then(user => {
 			if(!user) {
