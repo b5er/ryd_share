@@ -35,7 +35,7 @@ const typeDefs = `
 `
 
 const httpLink = new HttpLink({
-	uri: 'http://localhost:5000'
+	uri: 'http://localhost:8000'
 })
 
 const cache = new InMemoryCache()
